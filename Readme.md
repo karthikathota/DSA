@@ -10,7 +10,7 @@ For example in C if we take printf and scanf we know what they do but not how th
 # STACK
 
 ![](img/stack.png)
-Stack is an ADT with 2 main operaitons i.e push ad pop.  
+Stack is an linear ADT with 2 main operaitons i.e push ad pop.  
 It follows Last In First Out(LIFO).  
 Elements are pushed from the top and popped from top.  
 All the operations are done with the help of a variable called top.
@@ -19,6 +19,18 @@ All the operations are done with the help of a variable called top.
 
 PUSH:- Adds an item on the top of the stack.  
 POP:- Removes an item from the top of the stack.
+
+## USE CASES
+
+Function call management in programming (keeping track of function calls and their return addresses).  
+Undo functionality in applications.  
+Parsing expressions and evaluating postfix notation.  
+Backtracking algorithms.
+
+## LIMITATIONS
+
+Stack has a fixed size in the case of implementing using arrays. Dynamic resizing is not capable.
+In stack we cannot access random elements as it follows LIFO principle.
 
 ## IMPLEMENTING PUSH
 
