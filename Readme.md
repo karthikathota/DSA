@@ -9,6 +9,7 @@ For example in C if we take printf and scanf we know what they do but not how th
 
 # STACK
 
+![](img/stack.png)
 Stack is an ADT with 2 main operaitons i.e push ad pop.  
 It follows Last In First Out(LIFO).  
 Elements are pushed from the top and popped from top.  
@@ -55,3 +56,40 @@ int main()
     }
 }
 ```
+
+# QUEUE
+
+It is an ABSTRACT data type and also a liner data structure.  
+It follows FIRST IN FIRST OUT(FIFO) rule.  
+There are 2 major operations i.e insertion(enqueue) and deletion(dequeue).  
+Operaitons on queue are done by 2 varibale pointing to the end(i.e rear) and front(i.e front) of the array.  
+Front is changed during deletion and rear is changed during insertion.
+
+## IMPLEMENTAION OF QUEUE
+
+### INSERTION
+
+```c
+void enqueue(int x)
+{
+    if(rear = n-1)
+    {
+        printf("QUEUE IS FULL");
+    }
+    else if ((front == -1) && (rear==-1))
+    {
+        front=0;
+        rear=0;
+        queue[rear]=x;
+    }
+    else{
+        rear++;
+        queue[rear]=x;
+    }
+
+}
+```
+
+# SINGLE LINKED LIST
+
+A single linked list is made of nodes which has 2 parts. One part is data and the other one is link i.e it contains address of the next node.
