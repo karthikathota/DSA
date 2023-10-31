@@ -1,11 +1,15 @@
 # DATASTRUCTURES
 
-A DATASTRUCTURE is a way to store and organize data to optimize its usage.
+A data structure is a fundamental concept in computer science and software engineering that defines
+how data is organized, stored, and manipulated in a computer program.
+Data structures provide a way to represent and manage data efficiently,
+allowing for easy access, modification, and retrieval of information.
+They serve as the building blocks for designing algorithms and solving complex problems.
 
 ## ADT(ABSTRACT DATA TYPES)
 
-Define the data and its operation but not implementaion.  
-For example in C if we take printf and scanf we know what they do but not how they are defined in the header file.
+In simple words we can deifne an ADT as an high level description of collection of data and operations that can be performed on the data.
+In other words, it specifies what the data structure does, not how it does it. Some of the common examples of ADTs are STACK, QUEUE, LIST etc.
 
 # STACK
 
@@ -105,3 +109,88 @@ void enqueue(int x)
 # SINGLE LINKED LIST
 
 A single linked list is made of nodes which has 2 parts. One part is data and the other one is link i.e it contains address of the next node.
+
+# DOUBLY LINKED LIST
+
+A doubly linked list is a linear data structure in which each element is a node containing data and two pointers/references: one pointing to the previous node and one pointing to the next node.
+
+Nodes: Each node in a doubly linked list has the following components:  
+-> Data: The actual value or content stored in the node.  
+-> Next Pointer: A reference to the next node in the list.  
+-> Previous Pointer: A reference to the previous node in the list.
+
+One of the main advantages that doubly linked list posses over single linked list is BI-DIRECTIONAL TRAVERSAL.
+
+### CREATING A DOUBLY LINKED LIST
+
+```c
+struct node
+{
+    int data;
+    struct node * next;
+    struct node * prev;
+};
+```
+
+### CREATING A NODE
+
+```c
+struct node* create(int data)
+{
+    struct node * newnode=(struct node*)malloc(sizeof(struct node));
+    if (newnode == NULL)
+    {
+        printf("error");
+    }
+    newnode->data=data;
+    newnode->prev=NULL;
+    newnode->next=NULL;
+    return newnode;
+}
+```
+
+### INSERTING A NEW NODE
+
+```c
+//INSERTING AT THE BEGINNING
+void insertAtBeginning(struct node ** head,int data){
+    struct node* newnode=create(data);
+    newnode->next=*head;
+    if (*head!=NULL)
+    {
+        (*head)->prev=newnode;
+    }
+    *head=newnode;
+}
+
+
+//INSERTING AT A GIVEN POSTION
+void insertAtPosition(struct node** head, int data, int position) {
+    struct node* newNode = createNode(data);
+    if (position == 1) {
+        newNode->next = *head;
+        if (*head != NULL) {
+            (*head)->prev = newNode;
+        }
+        *head = newNode;
+    }
+
+    struct node* current = *head;
+    int currentPosition = 1;
+    while (current != NULL && currentPosition < position - 1) {
+        current = current->next;
+        currentPosition++;
+    }
+
+    if (current == NULL) {
+        printf("Position out of range\n");
+    }
+
+    newNode->next = current->next;
+    newNode->prev = current;
+    if (current->next != NULL) {
+        current->next->prev = newNode;
+    }
+    current->next = newNode;
+}
+```
