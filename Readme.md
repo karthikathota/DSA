@@ -193,4 +193,67 @@ void insertAtPosition(struct node** head, int data, int position) {
     }
     current->next = newNode;
 }
+
+//INSERTING AT THE END
+void insertAtEnd(struct node** head, int data)
+{
+    struct node *newnode = create(data);
+
+    if (*head==NULL)
+    {
+        *head=newnode;
+    }
+    else
+    {
+        struct node* current = *head;
+        while (current->next != NULL) {
+            current = current->next;
+        }
+
+        // Update pointers to insert the new node at the end.
+        current->next = newnode;
+        newnode->prev = current;
+    }
+
+}
+```
+
+# CIRCULAR SINGLY LINKED LIST
+
+Circualr singly linked list is similar to the single linked list except that the last node is connected to the first node.  
+One intresting thing we during insertion is insertAtEnd and insertAtBeginning are practically the same in CIRCULAR SINGLE LINKED list.
+
+### CREATING A NODE
+
+```c
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+```
+
+### INSERTIONS
+
+```c
+//INSERT AT THE BEGINNING
+struct Node* insertAtBeginning(struct Node* head, int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+
+    if (head == NULL) {
+        newNode->next = newNode;
+        return newNode;
+    }
+
+    // Find the last node (tail) of the circular linked list
+    struct Node* tail = head;
+    while (tail->next != head) {
+        tail = tail->next;
+    }
+
+    newNode->next = head;
+    tail->next = newNode;
+    return newNode;
+}
 ```
