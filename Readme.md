@@ -177,6 +177,73 @@ void insertAtPosition(struct Node** head, int data, int position) {
 }
 ```
 
+### DELETION
+
+```c
+// DELETEING A NODE FROM THE BEGINNING OF THE LIST
+void deleteFromBeginning(struct Node** head) {
+    if (*head == NULL) {
+        return;
+    }
+
+    struct Node* temp = *head;
+    *head = (*head)->next;
+    free(temp);
+}
+
+// DELETEING A NODE FROM THE END OF THE LIST
+void deleteFromEnd(struct Node** head) {
+    if (*head == NULL) {
+        return;
+    }
+
+    if ((*head)->next == NULL) {
+        free(*head);
+        *head = NULL;
+        return;
+    }
+
+    struct Node* current = *head;
+    while (current->next->next != NULL) {
+        current = current->next;
+    }
+
+    free(current->next);
+    current->next = NULL;
+}
+
+// DELETEING A NODE FROM A GIVEN POSTION IN THE LIST
+void deleteFromPosition(struct Node** head, int position) {
+    if (*head == NULL) {
+        return;
+    }
+
+    if (position == 1) {
+        struct Node* temp = *head;
+        *head = (*head)->next;
+        free(temp);
+        return;
+    }
+
+    struct Node* current = *head;
+    int currentPosition = 1;
+
+    while (currentPosition < position - 1 && current->next != NULL) {
+        current = current->next;
+        currentPosition++;
+    }
+
+    if (current->next == NULL) {
+        return;
+    }
+
+    struct Node* temp = current->next;
+    current->next = temp->next;
+    free(temp);
+}
+
+```
+
 # DOUBLY LINKED LIST
 
 A doubly linked list is a linear data structure in which each element is a node containing data and two pointers/references: one pointing to the previous node and one pointing to the next node.
