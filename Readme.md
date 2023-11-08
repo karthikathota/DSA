@@ -110,13 +110,80 @@ void enqueue(int x)
 
 A single linked list is made of nodes which has 2 parts. One part is data and the other one is link i.e it contains address of the next node.
 
+### NODE
+
+```c
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+```
+
+### INSERTION
+
+```c
+// INSERTING A NEW NODE AT THE BEGINNING OF THE LSIT
+void insertAtBeginning(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    newNode->next = *head;
+    *head = newNode;
+}
+
+// INSERTING A NEW NODE AT THE END OF THE LSIT
+void insertAtEnd(struct Node** head, int data) {
+    struct Node* newNode = createNode(data);
+    newNode->next = NULL;
+
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+
+    struct Node* current = *head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+
+    current->next = newNode;
+}
+
+// INSERTING A NEW NODE AT A GIVE POSTION OF THE LSIT
+void insertAtPosition(struct Node** head, int data, int position) {
+    struct Node* newNode = createNode(data);
+
+    if (position == 1) {
+        newNode->next = *head;
+        *head = newNode;
+        return;
+    }
+
+    struct Node* current = *head;
+    int currentPosition = 1;
+
+    while (currentPosition < position - 1 && current->next != NULL) {
+        current = current->next;
+        currentPosition++;
+    }
+
+    newNode->next = current->next;
+    current->next = newNode;
+}
+```
+
 # DOUBLY LINKED LIST
 
 A doubly linked list is a linear data structure in which each element is a node containing data and two pointers/references: one pointing to the previous node and one pointing to the next node.
 
-Nodes: Each node in a doubly linked list has the following components:  
--> Data: The actual value or content stored in the node.  
--> Next Pointer: A reference to the next node in the list.  
+Nodes: Each node in a doubly linked list has the following components:
+-> Data: The actual value or content stored in the node.
+-> Next Pointer: A reference to the next node in the list.
 -> Previous Pointer: A reference to the previous node in the list.
 
 One of the main advantages that doubly linked list posses over single linked list is BI-DIRECTIONAL TRAVERSAL.
@@ -246,7 +313,6 @@ struct Node* insertAtBeginning(struct Node* head, int data) {
         return newNode;
     }
 
-    // Find the last node (tail) of the circular linked list
     struct Node* tail = head;
     while (tail->next != head) {
         tail = tail->next;
