@@ -129,14 +129,14 @@ struct Node* createNode(int data) {
 ### INSERTION
 
 ```c
-// INSERTING A NEW NODE AT THE BEGINNING OF THE LSIT
+// INSERTING A NEW NODE AT THE BEGINNING OF THE LIST
 void insertAtBeginning(struct Node** head, int data) {
     struct Node* newNode = createNode(data);
     newNode->next = *head;
     *head = newNode;
 }
 
-// INSERTING A NEW NODE AT THE END OF THE LSIT
+// INSERTING A NEW NODE AT THE END OF THE LIST
 void insertAtEnd(struct Node** head, int data) {
     struct Node* newNode = createNode(data);
     newNode->next = NULL;
@@ -154,7 +154,7 @@ void insertAtEnd(struct Node** head, int data) {
     current->next = newNode;
 }
 
-// INSERTING A NEW NODE AT A GIVE POSTION OF THE LSIT
+// INSERTING A NEW NODE AT A GIVE POSTION OF THE LIST
 void insertAtPosition(struct Node** head, int data, int position) {
     struct Node* newNode = createNode(data);
 
@@ -352,9 +352,88 @@ void insertAtEnd(struct node** head, int data)
 }
 ```
 
+### DELETION
+
+```c
+// DELETEING A NODE FROM THE BEGINNING OF THE LIST
+void deleteAtBeginning(struct node **head) {
+    if (*head == NULL) {
+        printf("List is empty. Cannot delete from an empty list.\n");
+        return;
+    }
+
+    struct node* toDelete = *head;
+    *head = toDelete->next;
+    if (*head != NULL) {
+        (*head)->prev = NULL;
+    }
+    free(toDelete);
+}
+
+// DELETEING A NODE FROM THE END OF THE LIST
+void deleteAtEnd(struct node** head) {
+    if (*head == NULL) {
+        printf("List is empty. Cannot delete from an empty list.\n");
+        return;
+    }
+
+    if ((*head)->next == NULL) {
+        // There is only one node in the list.
+        free(*head);
+        *head = NULL;
+        return;
+    }
+
+    struct node* current = *head;
+    while (current->next != NULL) {
+        current = current->next;
+    }
+
+    current->prev->next = NULL;
+    free(current);
+}
+
+// DELETEING A NODE FROM A GIVEN POSITION IN THE LIST
+
+void deleteAtPosition(struct node** head, int position) {
+    if (position <= 0) {
+        printf("Invalid position. Position must be a positive integer.\n");
+        return;
+    }
+
+    if (*head == NULL) {
+        printf("List is empty. Cannot delete from an empty list.\n");
+        return;
+    }
+
+    if (position == 1) {
+        deleteAtBeginning(head);
+        return;
+    }
+
+    struct node* current = *head;
+    int currentPosition = 1;
+    while (current != NULL && currentPosition < position) {
+        current = current->next;
+        currentPosition++;
+    }
+
+    if (current == NULL) {
+        printf("Position out of range. Cannot delete at this position.\n");
+        return;
+    }
+
+    current->prev->next = current->next;
+    if (current->next != NULL) {
+        current->next->prev = current->prev;
+    }
+    free(current);
+}
+```
+
 # CIRCULAR SINGLY LINKED LIST
 
-Circualr singly linked list is similar to the single linked list except that the last node is connected to the first node.  
+Circualr singly linked list is similar to the single linked list except that the last node is connected to the first node.
 One intresting thing we during insertion is insertAtEnd and insertAtBeginning are practically the same in CIRCULAR SINGLE LINKED list.
 
 ### CREATING A NODE
