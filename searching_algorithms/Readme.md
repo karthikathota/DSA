@@ -84,3 +84,17 @@ int main() {
     return 0;
 }
 ```
+
+The algorithm begins by assuming that the first element in the array is already sorted(i = 1 as shown above). It considers the next element in the array as the key.  
+The key element is compared with the elements to its left in the already sorted part of the array.  
+If the key is smaller than the compared element, the compared element is moved one position to the right.  
+This process is repeated until an element smaller than or equal to the key is found or the beginning of the array is reached.  
+Once an element smaller than or equal to the key is found (or the beginning of the array is reached), the key is inserted at the position after the last shifted element.
+
+## Advantages and Disadvantages
+
+### Advantages
+
+**Simple Implementation:** Insertion sort is easy to implement and understand. It is a good choice for small datasets or when simplicity is more critical than the efficiency of the sorting algorithm.  
+**Efficient for Small Datasets:** For small datasets or partially sorted datasets, insertion sort can be more efficient than other more complex algorithms such as quicksort or merge sort.  
+**Adaptive:** It is adaptive, meaning that it performs well on datasets that are already partially sorted.
