@@ -98,3 +98,8 @@ Once an element smaller than or equal to the key is found (or the beginning of t
 **Simple Implementation:** Insertion sort is easy to implement and understand. It is a good choice for small datasets or when simplicity is more critical than the efficiency of the sorting algorithm.  
 **Efficient for Small Datasets:** For small datasets or partially sorted datasets, insertion sort can be more efficient than other more complex algorithms such as quicksort or merge sort.  
 **Adaptive:** It is adaptive, meaning that it performs well on datasets that are already partially sorted.
+
+### Disadvantages
+
+**Inefficiency for Large Datasets:** Insertion sort is inefficient for large datasets, especially when compared to more advanced algorithms like quicksort or merge sort.  
+**Not In-Place:** The basic version of insertion sort requires extra memory space for the key element during the shifting process. While it can be modified to be in-place, the in-place version is still less efficient than other in-place sorting algorithms like quicksort.
