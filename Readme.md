@@ -524,3 +524,22 @@ the right subtree are greater than the root node.
  a)Find the inorder successor (smallest value in the right subtree).  
  b)Replace the node's value with the successor's value.  
  c)Delete the successor node (which will now have at most one child).
+
+# AVL Tree
+
+AVL trees are a special type of binary search tree (BST) that maintain balance by ensuring the difference in heights between the left and
+right subtrees of any node is at most 1. This prevents the tree from
+becoming skewed, which can significantly impact search performance in a BST.
+
+Imagine a regular BST that gets filled with values in a sequence like 1, 2, 3, 4, 5, 6, 7, 8, 9.
+This would create a right-skewed tree, where the right subtree is much deeper than the left. Searching for a value near the root would still be fast, but finding something in the bottom right corner would be slow because we'd
+have to traverse many more nodes.
+An AVL tree avoids this by performing rotations whenever the balance factor (difference in heights) of a node becomes greater than 1. These rotations restructure the tree in a way that maintains the
+balance property and keeps the search performance efficient.
+
+There are 4 types of rotations:-
+
+1. Left Rotation
+2. Right Rotation
+3. Right Left Rotation
+4. Left Right rotation
