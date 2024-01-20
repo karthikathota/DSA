@@ -476,13 +476,13 @@ struct Node* insertAtBeginning(struct Node* head, int data) {
 
 A binary tree is a non-linear data structure
 where each node can have at most two children, typically called the left and right child.  
-![](img/BINARYTREE.png)
+![](../img/BINARYTREE.png)
 
 Visiting each node in a specific order. Common traversal methods include pre-order, in-order, and post-order.
 
 ### PRE-ORDER traversal
 
 Order of traversal:- ROOT, LEFT SUBTREE, RIGHT SUBTREE.
-![](img/eg-1.png)
+![](../img/eg-1.png)
 
 The pre-order of this binary tree is:- 4,2,1,3,9,8,6,5,7,10
