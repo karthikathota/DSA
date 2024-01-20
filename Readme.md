@@ -492,7 +492,7 @@ The pre-order of this binary tree is:- 4,2,1,3,9,8,6,5,7,10
 
 Order of traversal:- LEFT SUBTREE, ROOT, RIGHTSUBTREE
 
-![](img/eg-1.png =100x200)
+![alt text](img/eg-1.png =100x200)
 
 The in-order traversal of this binary tree is:- 1,2,3,4,5,6,7,8,9,10
 
