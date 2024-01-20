@@ -484,7 +484,7 @@ Visiting each node in a specific order. Common traversal methods include pre-ord
 
 Order of traversal:- ROOT, LEFT SUBTREE, RIGHT SUBTREE.
 
-![](img/eg-1.png =100x200)
+![](img/eg-1.png)
 
 The pre-order of this binary tree is:- 4,2,1,3,9,8,6,5,7,10
 
@@ -492,7 +492,7 @@ The pre-order of this binary tree is:- 4,2,1,3,9,8,6,5,7,10
 
 Order of traversal:- LEFT SUBTREE, ROOT, RIGHTSUBTREE
 
-![alt text](img/eg-1.png =100x200)
+![](img/eg-1.png)
 
 The in-order traversal of this binary tree is:- 1,2,3,4,5,6,7,8,9,10
 
@@ -500,7 +500,7 @@ The in-order traversal of this binary tree is:- 1,2,3,4,5,6,7,8,9,10
 
 Order of traversal:- LEFT SUBTREE, RIGHTSUBTREE, ROOT
 
-![](img/eg-1.png =100x200)
+![](img/eg-1.png)
 
 The post-order traversal of this binary tree is:- 1,3,2,5,7,6,8,10,9,4
 
@@ -508,3 +508,19 @@ The post-order traversal of this binary tree is:- 1,3,2,5,7,6,8,10,9,4
 
 It is a type of binary tree where the elements in the left subtree are smaller that the root node and the elements in
 the right subtree are greater than the root node.
+
+#### Insertion
+
+1.Start at the root.  
+2.If the value to insert is less than the current node's value, move to the left child.  
+3.If the value is greater than or equal to the current node's value, move to the right child.  
+4.Repeat steps 2-3 until you reach an leaf node, then insert the new node there.
+
+#### Deletion
+
+1.Deleting a leaf node (no children): Simply remove the node.  
+2.Deleting a node with one child: Replace the node with its child.  
+3.Deleting a node with two children:  
+ a)Find the inorder successor (smallest value in the right subtree).  
+ b)Replace the node's value with the successor's value.  
+ c)Delete the successor node (which will now have at most one child).
