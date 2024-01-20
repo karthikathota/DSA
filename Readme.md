@@ -542,7 +542,7 @@ There are 4 types of rotations:-
 1. Left Rotation
 2. Right Rotation
 3. Right Left Rotation
-4. Left Right rotation
+4. Left Right Rotation
 
 ### Left Rotation
 
@@ -553,3 +553,15 @@ This rotation is used when the left subtree of a node has greater height compare
 
 This rotation is used when the right subtree of a node has greater height compared to left subtree
 ![](img/rightrotation.png)
+
+### Right Left Rotation
+
+This occurs when the left subtree of a node is taller, but the left child has a right subtree which is causing the height imbalance i.e height>1.
+To address this imbalance a right rotation is first performed following which a left rotation is performed.  
+![](img/RLrotation.png)
+
+### Left Right Rotation
+
+This occurs when the right subtree of a node is taller, but the right child has a left subtree which is causing the height imbalance i.e height>1.
+To address this imbalance a left rotation is first performed following which a right rotation is performed.  
+![](img/LRrotation.png)
